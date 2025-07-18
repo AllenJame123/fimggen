@@ -1,0 +1,150 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%; /* #FFFFFF */
+    --foreground: 0 0% 12%; /* #1F1F1F - Darker text */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 12%;
+    --primary: 238 94% 82%; /* Adjusted for gradient */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%; /* #F6F6F6 */
+    --secondary-foreground: 0 0% 25%; /* Darker secondary text */
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 12%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 80%; /* #CCCCCC */
+    --input: 0 0% 80%;
+    --ring: 238 94% 82%;
+    --radius: 1rem; /* Increased border radius */
+  }
+ 
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1 {
+    @apply text-3xl font-bold tracking-tight md:text-4xl;
+  }
+
+  h2 {
+    @apply text-2xl font-semibold tracking-tight md:text-3xl;
+  }
+
+  h3 {
+    @apply text-xl font-semibold tracking-tight md:text-2xl;
+  }
+
+  p {
+    @apply text-base text-secondary-foreground md:text-lg;
+  }
+
+  .glass-panel {
+    @apply bg-white shadow-lg rounded-2xl border border-secondary/50 transition-all duration-200;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(246, 246, 246, 0.95));
+    backdrop-filter: blur(10px);
+  }
+
+  /* Updated primary gradient to match active menu style */
+  .primary-gradient {
+    background: linear-gradient(135deg, #8A2BE2, #1E90FF);
+    @apply text-white rounded-lg transition-all duration-300 shadow-md;
+  }
+
+  .primary-gradient:hover {
+    @apply shadow-lg brightness-105 scale-[1.02];
+  }
+
+  /* Input styling */
+  input, textarea, select {
+    @apply rounded-lg border-secondary focus:border-primary focus:ring-1 focus:ring-primary transition-colors duration-200;
+  }
+
+  /* Updated button styling to match active menu */
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-300 disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply primary-gradient shadow-md hover:shadow-lg disabled:cursor-not-allowed;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-secondary {
+    @apply bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 transition-colors duration-300;
+  }
+
+  /* Responsive padding */
+  @media (max-width: 640px) {
+    .container {
+      @apply px-4;
+    }
+  }
+
+  /* Improve text readability on mobile */
+  @media (max-width: 640px) {
+    h1 {
+      @apply text-3xl;
+    }
+    h2 {
+      @apply text-2xl;
+    }
+    p {
+      @apply text-base;
+    }
+  }
+}
+
+@layer components {
+  .blog-content {
+    @apply max-w-4xl mx-auto leading-relaxed px-4 sm:px-0 text-left;
+  }
+
+  .blog-content h2 {
+    @apply text-3xl font-bold mb-8 mt-12 tracking-tight text-left;
+  }
+
+  .blog-content h3 {
+    @apply text-2xl font-semibold mb-6 mt-10 text-left;
+  }
+
+  .blog-content p {
+    @apply text-lg mb-6 leading-relaxed text-left;
+  }
+
+  .blog-content section {
+    @apply text-left;
+  }
+
+  .blog-content article {
+    @apply py-8 text-left;
+  }
+
+  .blog-title {
+    @apply text-4xl font-bold tracking-tight text-left;
+  }
+
+  /* Responsive card grid */
+  .card-grid {
+    @apply grid gap-6;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  /* Responsive image container */
+  .responsive-image {
+    @apply w-full h-auto object-cover rounded-lg;
+  }
+}

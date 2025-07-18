@@ -1,0 +1,97 @@
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NEXT_PUBLIC_SUPABASE_URL = "https://ftvwohriusaknrzfogjh.supabase.co"
+  
+[dev]
+  command = "npm run dev"
+  port = 3000
+  targetPort = 3000
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Enable built-in Netlify prerendering for better SEO
+[[plugins]]
+  package = "@netlify/plugin-sitemap"
+
+# Enable crawler-friendly output with Netlify prerendering
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+
+# Headers to improve SEO and security
+[[headers]]
+  for = "/*"
+    [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https://cdn.gpteng.co https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;"
+
+# Cache control for static assets
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Add prerender headers for crawlers
+[[headers]]
+  for = "/"
+  [headers.values]
+    X-Robots-Tag = "index, follow"
+
+# Force prerendering for all pages - using newer Netlify syntax
+[build.processing]
+  skip_processing = false
+
+# Rendering optimization
+[[plugins]]
+  package = "netlify-plugin-inline-critical-css"
+
+# Create dedicated prerender routes for each page with proper HTML files
+[[redirects]]
+  from = "/logo-generator"
+  to = "/logo-generator.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/favicon-generator"
+  to = "/favicon-generator.html" 
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/meme-generator"
+  to = "/meme-generator.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/add-text-to-photo"
+  to = "/add-text-to-photo.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/blog"
+  to = "/blog.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/blog/*"
+  to = "/blog.html"
+  status = 200
+  force = true
+
+# Handle all other routes with the SPA
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

@@ -1,0 +1,18 @@
+
+project_id = "ftvwohriusaknrzfogjh"
+
+[functions.generate-image]
+verify_jwt = false
+
+[functions.generate-logo]
+verify_jwt = false
+
+[functions.generate-favicon]
+verify_jwt = false
+
+[functions.generate-favicon-icon]
+verify_jwt = false
+
+[functions.generate-meme]
+verify_jwt = false
+
