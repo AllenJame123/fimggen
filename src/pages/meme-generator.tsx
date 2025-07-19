@@ -64,7 +64,7 @@ const MemeGenerator: NextPage = () => {
       toast.success("Meme generated successfully!");
     } catch (error: unknown) {
       console.error("Error generating meme:", error);
-      toast.error((error as Error).message || "Failed to generate meme. Please try again.");
+      toast.error((error instanceof Error ? error.message : "Failed to generate meme. Please try again."));
     } finally {
       setIsGenerating(false);
     }

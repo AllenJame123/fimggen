@@ -17,7 +17,7 @@ if (typeof window !== 'undefined' && !window.process) {
 
 // Export diagnostic info to window for debugging
 if (typeof window !== 'undefined') {
-  (window as unknown as typeof window).__ENV_INFO = {
+  (window as unknown as Record<string, unknown>).__ENV_INFO = {
     mode: import.meta.env.MODE,
     supabase_url: import.meta.env.NEXT_PUBLIC_SUPABASE_URL,
     timestamp: new Date().toISOString()
