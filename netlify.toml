@@ -50,8 +50,7 @@
   skip_processing = false
 
 # Rendering optimization
-[[plugins]]
-  package = "netlify-plugin-inline-critical-css"
+# Removed netlify-plugin-inline-critical-css plugin due to native module errors
 
 # Create dedicated prerender routes for each page with proper HTML files
 [[redirects]]
