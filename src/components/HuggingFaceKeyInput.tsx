@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { KeyRound } from "lucide-react";
 import { toast } from "sonner";
-import { supabase } from "../integrations/supabase/client";
+import { supabase } from "@/integrations/supabase/client";
 
 const HuggingFaceKeyInput = () => {
   const [apiKey, setApiKey] = useState("");
